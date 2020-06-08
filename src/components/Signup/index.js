@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from 'react-router-dom'
 import "./styles.scss";
 
 import { auth, handleUserProfile } from "./../../firebase/utils";
@@ -37,6 +38,7 @@ const Singup = (props) => {
             );
             await handleUserProfile(user, { displayName });
             reset();
+            props.history.push('/')
         } catch (err) {
             //console.log(err)
         }
@@ -100,4 +102,4 @@ const Singup = (props) => {
     );
 };
 
-export default Singup;
+export default withRouter(Singup);
